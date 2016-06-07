@@ -2,26 +2,28 @@
 #include <iostream>
 
 using namespace std;
-
+template<<class T>>
 class nodo
 {
     public:
-        int dato;
+        T dato;
         nodo* sig;
-        nodo(int a);
+        nodo(T);
         virtual ~nodo();
     protected:
     private:
 };
-nodo::nodo(int a)
+template<<class T>>
+nodo::nodo(T a)
 {
     dato=a;
     sig=NULL;
 }
-
+template<<class T>>
 nodo::~nodo()
 {
 }
+template<<class T>>
 class lista
 {
     public:
@@ -40,13 +42,14 @@ class lista
     protected:
     private:
 };
+template<<class T>>
 lista::lista()
 {
     primero=ultimo=NULL;
     //ctor
 }
-
-void lista::add(int el){
+template<<class T>>
+void lista<<T>>::add(T el){
     if (!primero){
         primero=new nodo(el);
         ultimo=primero;
@@ -58,8 +61,8 @@ void lista::add(int el){
 
     }
 }
-
-void lista::invertir()
+template<<class T>>
+void lista<<T>>::invertir()
 {
     nodo* temp;
     nodo* temp3;
@@ -80,11 +83,11 @@ void lista::invertir()
     }
     ultimo=temp3;
 }
-
-void lista::sumar()
+template<<class T>>
+void lista<<T>>::sumar()
 {
-    int x;
-    int suma=0;
+    T x;
+    T suma=0;
     nodo* temp;
     temp=primero;
     while(temp!=ultimo->sig){
@@ -94,14 +97,14 @@ void lista::sumar()
     }
     cout<<suma<<endl;
 }
-
-void lista::ordenar()
+template<<class T>>
+void lista<<T>>::ordenar()
 {
     int cont=0;
     nodo* temp=primero;
     nodo* temp2;
-    int numero;
-    int numero2;
+    T numero;
+    T numero2;
     while(temp!=ultimo->sig){
         cont++;
         temp=temp->sig;
@@ -122,14 +125,14 @@ void lista::ordenar()
     }
 
 }
-
-void lista::unir(lista h)
+template<<class T>>
+void lista<<T>>::unir(lista h)
 {
     ultimo->sig=h.primero;
     ultimo=ultimo->sig;
 }
-
-void lista::eliminar(int pos)
+template<<class T>>
+void lista<<T>>::eliminar(int pos)
 {
     nodo* temp=primero;
     nodo* temp2;
@@ -163,13 +166,13 @@ void lista::eliminar(int pos)
         primero=temp2;
     }
 }
-
-void lista::insertar(int pos, int val)
+template<<class T>>
+void lista<<T>>::insertar(int pos, T val)
 {
     nodo* temp;
     int posi=0;
-    int tempo;
-    int tempo2;
+    T tempo;
+    T tempo2;
     ultimo->sig=new nodo(val);
     ultimo=ultimo->sig;
     temp=primero;
@@ -192,8 +195,8 @@ void lista::insertar(int pos, int val)
     }
 
 }
-
-void lista:: print()
+template<<class T>>
+void lista<<T>>:: print()
 {
     nodo* temp;
     temp=primero;
@@ -203,15 +206,15 @@ void lista:: print()
     }
 
 }
-
-lista::~lista()
+template<<class T>>
+lista<<T>>::~lista()
 {
 }
 
 int main()
 {
-  lista a;
-    lista b;
+  lista<int> a;
+    lista<int> b;
     a.add(8);
     a.add(6);
     a.add(7);
